@@ -69,7 +69,7 @@ class PresenceController extends AbstractController
 
         // Checks if employee exists or ID is not part of the request
         if (!$user || !isset($data['id'])) {
-            return new JsonResponse(['error' => 'employee not found or id not provided'], Response::HTTP_NOT_FOUND);
+            return new JsonResponse(['response' => 'employee not found or id not provided'], Response::HTTP_NOT_FOUND);
         }
 
         $entries = $this->presenceRepository->findBy(['userId' => $data['id']]);
@@ -95,7 +95,7 @@ class PresenceController extends AbstractController
             return new JsonResponse($output, Response::HTTP_CREATED);
         }
 
-        return new JsonResponse(['error' => 'could not save employee check-in'], Response::HTTP_BAD_REQUEST);
+        return new JsonResponse(['response' => 'could not save employee check-in'], Response::HTTP_BAD_REQUEST);
     }
 
     /**
